@@ -1,0 +1,42 @@
+{
+	"dockerDependencies": 
+	[
+		"binutils-dev",
+		"libunwind-dev",
+		"clang-7"
+	],
+
+	"fuzzer": {		
+		"compile": {
+			"git": {
+				"clone": "https://github.com/google/honggfuzz.git",
+				"checkout": ">>currently commented out in ../scriptsInDocker/installFuzzer.sh<<"
+			},
+			"path": "honggfuzz/",
+			"sub_path": "honggfuzz",
+			"make": "make",
+
+			"CC_compiler": "$HOME/honggfuzz/hfuzz_cc/hfuzz-clang",
+			"CXX_compiler": "$HOME/honggfuzz/hfuzz_cc/hfuzz-clang++"
+		},
+
+		"exportable_environment_var": [],
+
+		"args": {
+			"in": "-i /home/fuzz/inFuzz/",
+			"out_write": ["-W", "/home/fuzz/outFuzz/", "-o", "/home/fuzz/outFuzz"],
+			"out_read": ["*"],
+			"timeout_set_on_ms": "--timeout 1",
+			"timout_comment": "this fuzzer uses seconds",
+			"timeout_nr_in_ms": 1000,
+			"time_duration_set_on_s": "--run_time 86400",
+			"time_duration_nr_in_s": 86400,
+                        "comment_to_time_duration": "86400s equal 24 hour(s)",
+			"extra": ["--threads 1", "--tmout_sigvtalrm", "--verbose", "--no_fb_timeout true"],
+			"file_insert": "___FILE___",
+			"mark_off_program": "--"
+		},
+		"multithreading_suffix": [""]
+	}
+
+}	

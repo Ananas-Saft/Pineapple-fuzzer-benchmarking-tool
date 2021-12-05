@@ -1,0 +1,60 @@
+{
+
+	"dockerDependencies":
+	[
+		"autoconf",
+		"automake",
+		"build-essential",
+		"cmake",
+		"git-core",
+		"libass-dev",
+		"libfreetype6-dev",
+		"libgnutls28-dev",
+		"libsdl2-dev",
+		"libtool",
+		"libva-dev",
+		"libvdpau-dev",
+		"libvorbis-dev",
+		"libxcb1-dev",
+		"libxcb-shm0-dev",
+		"libxcb-xfixes0-dev",
+		"meson",
+		"ninja-build",
+		"pkg-config",
+		"texinfo",
+		"wget",
+		"yasm",
+		"zlib1g-dev"
+	],
+
+	"program": 
+	{
+		"git": {
+			"clone": "https://github.com/vim/vim.git",
+			"checkout": "v8.1.2135"
+		},
+		"path": "vim/",
+		"sub_path": "src/vim",
+		"configure_fuzz": "./configure --with-features=huge --enable-gui=none",
+		"configure_ASan": "./configure --with-features=huge --enable-gui=none --disable-shared CFLAGS=\"-fsanitize=address -ggdb\" CXXFLAGS=\"-fsanitize=address -ggdb\" LDFLAGS=\"-fsanitize=address\"",
+		"make": "make",
+	
+		"args": ["-u", "NONE", "-X", "-Z", "-e", "-s", "-S", "@@"],
+		
+		"CVE_file": {
+			"link": "https://dl.packetstormsecurity.net/1910-exploits/vim812135-useafterfree.tgz",
+			"unpack": true,
+			"unpack_cmd": "tar --extract --file "
+		},
+
+		"inputs": {
+			"cmd_for_sample_files": "echo \"a*b\\+\\|[0-9]\\|\\d{1,9}\" > 1 ; echo \"^\\d{1,10}$\" > 2",
+			"link": [""],
+			"unpack": false,
+                        "unpack_cmd": ""
+
+		},
+	
+		"stack_N-compare": 3
+	}
+}	

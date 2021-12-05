@@ -1,0 +1,62 @@
+{
+
+	"dockerDependencies":
+	[
+		"autoconf",
+		"automake",
+		"build-essential",
+		"cmake",
+		"git-core",
+		"libass-dev",
+		"libfreetype6-dev",
+		"libgnutls28-dev",
+		"libmp3lame-dev",
+		"libsdl2-dev",
+		"libtool",
+		"libva-dev",
+		"libvdpau-dev",
+		"libvorbis-dev",
+		"libxcb1-dev",
+		"libxcb-shm0-dev",
+		"libxcb-xfixes0-dev",
+		"meson",
+		"ninja-build",
+		"pkg-config",
+		"texinfo",
+		"wget",
+		"yasm",
+		"zlib1g-dev"
+	],
+
+	"program": 
+	{
+		"git": {
+			"clone": "https://github.com/FFmpeg/FFmpeg.git",
+			"checkout": "n4.1.5",
+			"unpack": false
+		},
+		"path": "FFmpeg/",
+		"sub_path": "ffmpeg_g",
+		"configure_fuzz": "./configure --cc=\"$CC\" --cxx=\"$CXX\"",
+		"configure_ASan": "./configure --disable-shared --extra-cflags=\"-I$HOME/ffmpeg_build/include -fsanitize=address -g\" --extra-ldflags=\"-L$HOME/ffmpeg_build/lib -fsanitize=address\"",
+		"make": "make",
+	
+		"args": ["-y", "-r", "73", "-i", "@@", "-map", "0", "-c:v", "apng", "-c:a", "pcm_dvd", "-disposition:a", "ac3_fixed", "-disposition:s:13", "ac3_fixed", "-ac", "16", "tmp_.pgm"],
+		
+		"CVE_file": {
+			"link": "https://trac.ffmpeg.org/raw-attachment/ticket/7989/tmp.pbm",
+			"unpack": false,
+			"unpack_cmd": "tar --extract --file "
+		},
+
+		"inputs": {
+			"cmd_for_sample_files": "echo \"P1 \\n # This is an example bitmap of the letter \"J\" \\n 6 10 \\n 0 0 0 0 1 0 \\n 0 0 0 0 1 0 \\n 0 0 0 0 1 0 \\n 0 0 0 0 1 0 \\n 0 0 0 0 1 0 \\n 0 0 0 0 1 0 \\n 1 0 0 0 1 0 \\n 0 1 1 1 0 0 \\n 0 0 0 0 0 0 \\n 0 0 0 0 0 0\" > j.pbm",
+			"link": ["https://filesamples.com/samples/image/pbm/sample_640%C3%97426.pbm"],
+			"unpack": false,
+                        "unpack_cmd": ""
+
+		},
+	
+		"stack_N-compare": 3
+	}
+}	

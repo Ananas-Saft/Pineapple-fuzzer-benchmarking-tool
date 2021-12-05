@@ -1,0 +1,53 @@
+{
+	"dockerDependencies": 
+	[
+		"build-essential",
+		"python3-dev",
+		"automake git",
+	        "flex",
+	        "bison",
+	        "libglib2.0-dev",
+	        "libpixman-1-dev",
+	        "python3-setuptools",
+		"lld",
+	        "llvm",
+	        "llvm-dev",
+	        "clang",
+		"gcc-9-plugin-dev ",
+		"libstdc++-9-dev"
+		],
+
+	"fuzzer": {		
+		"compile": {
+			"git": {
+				"clone": "https://github.com/AFLplusplus/AFLplusplus",
+				"checkout": ">>currently commented out in ../scriptsInDocker/installFuzzer.sh<<"
+			},
+			"path": "AFLplusplus/",
+			"sub_path": "afl-fuzz",
+			"make": "make distrib",
+
+			"CC_compiler": "$HOME/AFLplusplus/afl-clang-fast",
+			"CXX_compiler": "$HOME/AFLplusplus/afl-clang-fast++"
+		},
+
+		"exportable_environment_var": ["AFL_NO_AFFINITY=1"],
+
+		"args": {
+			"in": "-i /home/fuzz/inFuzz/",
+			"out_write": ["-o", "/home/fuzz/outFuzz/"],
+			"out_read": ["*/crashes/*", "*/hangs/*", "*/queue/*"],
+			"timeout_set_on_ms": "-t 1000",
+			"timeout_comment": "this fuzzer uses milliseconds",
+			"timeout_nr_in_ms": 1000,
+			"time_duration_set_on_s": "-V 86400",
+			"time_duration_nr_in_s": 86400,                        
+			"comment_to_time_duration": "86400s equal 24 hour(s)",
+			"extra": [],
+			"file_insert": "@@",
+			"mark_off_program": "--"
+		},
+		"multithreading_suffix": [""]
+	}
+
+}	

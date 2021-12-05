@@ -1,0 +1,61 @@
+[+] script sets up a docker container to fuzz old program versions for a CVE and then check for matches automatically
+[ ] this script needs docker python3 to function properly
+[ ] this script has been tested for "Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1"
+[ ] you are currently running " Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.2 " 
+[ ] this script has been tested for "Python 3.8.10"
+[ ] you are currently running " Python 3.8.10 " 
+[ ] checking for "Dockerfile" in the current directory
+[+] "Dockerfile" could be found in the current directory
+[ ] making temporary directories to start Docker containers
+[+] starting all container which use ../execInitFuzzer/initFuzzAFL++.json
+[+] forming dir fuzzTemp0/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp0
+
+[+] formatting dependencies from .json files for Docker
+[+] forming dir fuzzTemp1/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp1
+
+[+] formatting dependencies from .json files for Docker
+[+] forming dir fuzzTemp2/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp2
+
+[+] formatting dependencies from .json files for Docker
+[+] starting all container which use ../execInitFuzzer/initFuzzHongg.json
+[+] forming dir fuzzTemp3/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp3
+
+[+] formatting dependencies from .json files for Docker
+[+] forming dir fuzzTemp4/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp4
+
+[+] formatting dependencies from .json files for Docker
+[+] forming dir fuzzTemp5/
+/disk/home/ubuntu/docker/runDockerFinal/tempDockerSetup/fuzzTemp5
+
+[+] formatting dependencies from .json files for Docker
+Error response from daemon: No such container: fuzz12
+Error response from daemon: No such container: fuzz13
+Error response from daemon: No such container: fuzz11
+Error response from daemon: No such container: fuzz14
+Error response from daemon: No such container: fuzz15
+Error response from daemon: No such container: fuzz16
+Error: No such container: fuzz12
+Error: No such container: fuzz13
+Error: No such container: fuzz11
+Error: No such container: fuzz16
+Error: No such container: fuzz14
+Error: No such container: fuzz15
+the input device is not a TTY
+Error: No such container:path: fuzz13:/home/fuzz/ASan_results
+the input device is not a TTY
+Error: No such container:path: fuzz14:/home/fuzz/ASan_results
+the input device is not a TTY
+the input device is not a TTY
+Error: No such container:path: fuzz12:/home/fuzz/ASan_results
+Error: No such container:path: fuzz15:/home/fuzz/ASan_results
+the input device is not a TTY
+Error: No such container:path: fuzz11:/home/fuzz/ASan_results
+the input device is not a TTY
+Error: No such container:path: fuzz16:/home/fuzz/ASan_results
+['fuzzTemp0', 'fuzzTemp4', 'fuzzTemp5', 'fuzzTemp2', 'fuzzTemp3', 'fuzzTemp1']
+[('fuzzTemp0', 11), ('fuzzTemp4', 12), ('fuzzTemp5', 13), ('fuzzTemp2', 14), ('fuzzTemp3', 15), ('fuzzTemp1', 16)]

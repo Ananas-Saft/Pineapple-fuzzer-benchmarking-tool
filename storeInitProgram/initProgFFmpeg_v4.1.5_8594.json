@@ -1,0 +1,63 @@
+{
+
+	"dockerDependencies":
+	[
+		"autoconf",
+		"automake",
+		"build-essential",
+		"cmake",
+		"git-core",
+		"libass-dev",
+		"libfreetype6-dev",
+		"libgnutls28-dev",
+		"libmp3lame-dev",
+		"libsdl2-dev",
+		"libtool",
+		"libva-dev",
+		"libvdpau-dev",
+		"libvorbis-dev",
+		"libxcb1-dev",
+		"libxcb-shm0-dev",
+		"libxcb-xfixes0-dev",
+		"meson",
+		"ninja-build",
+		"pkg-config",
+		"texinfo",
+		"wget",
+		"yasm",
+		"zlib1g-dev"
+	],
+
+	"program": 
+	{
+		"git": {
+			"clone": "https://github.com/FFmpeg/FFmpeg.git",
+			"checkout": "n4.1.5",
+			"unpack": false
+		},
+		"path": "FFmpeg/",
+		"sub_path": "ffmpeg",
+		"configure_fuzz": "./configure --cc=\"$CC\" --cxx=\"$CXX\"",
+		"configure_ASan": "./configure --disable-shared --extra-cflags=\"-I$HOME/ffmpeg_build/include -fsanitize=address -g\" --extra-ldflags=\"-L$HOME/ffmpeg_build/lib -fsanitize=address\"",
+		"make": "make",
+	
+		"args": ["-i", "@@", "a.mp3"],
+		
+		"CVE_file": {
+			"echo_write": "",
+			"link": "https://trac.ffmpeg.org/raw-attachment/ticket/8594/id%3A000000%2Csrc%3A004026%2Ctime%3A40571915%2B001319%2Cop%3AMOpt_core_splice%2Crep%3A64",
+			"unpack": false,
+			"unpack_cmd": "tar --extract --file "
+		},
+
+		"inputs": {
+			"cmd_for_sample_files": "",
+			"link": ["https://github.com/MozillaSecurity/fuzzdata/blob/master/samples/ogg/virtual_cursor_key.ogg?raw=true"],
+			"unpack": false,
+                        "unpack_cmd": ""
+
+		},
+	
+		"stack_N-compare": 3
+	}
+}	
