@@ -22,7 +22,7 @@ def work_process(subdir, container_nr):
     print("starting docker in: " + os.getcwd())
     container_name = "fuzz" + str(container_nr)
     
-    os.system("docker stop " + container_name)
+#    os.system("docker stop " + container_name)
     os.system("docker rm " + container_name)
 
     #print("building docker")
@@ -37,8 +37,8 @@ def work_process(subdir, container_nr):
     #os.system("docker cp " + container_name + ":/home/fuzz/ASan_results" +" "+ "../../ASan_results/" + container_name + "_" + timestamp)
     print("[+] copied ASan_results/" + container_name)
 
-#    os.system("docker stop "+ container_name)
-#    os.system("docker rm " + container_name)
+    os.system("docker stop "+ container_name)
+    os.system("docker rm " + container_name)
 
     global working_dir
     os.chdir(working_dir)

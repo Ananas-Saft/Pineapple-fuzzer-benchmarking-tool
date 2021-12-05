@@ -1,2 +1,0 @@
-# ASan_results from 2021-10-26 23:11:11.702206 (YYYY-MM-DD hh:mm:ss.ms__µs)
-# following inputfiles have the last 3 stackstraces in common as the input ['/home/fuzz/inCVE/', '/home/fuzz/inCVE/vim812135-useafterfree', '/home/fuzz/inCVE/vim812135-useafterfree/vim812135-useafterfree.txt', '/home/fuzz/inCVE/vim812135-useafterfree/id:000001,sig:11,src:018487,time:45124324+017124,op:splice,rep:8', '/home/fuzz/inCVE/inputFileCVE0']
