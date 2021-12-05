@@ -3,7 +3,11 @@
 Pineapple is an open tool to benchmark fuzzers
 
 
-As dependencies, you need add Docker
+First, you need to clone this repository.
+  
+  git clone https://github.com/Ananas-Saft/Pineapple-fuzzer-benchmarking-tool
+
+You will need set up Docker as dependency to run Pineapple.
 
 Before you start benchmarking, use 
 
