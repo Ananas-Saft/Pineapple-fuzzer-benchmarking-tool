@@ -11,7 +11,7 @@ with open("./PineappleThreads", "r") as f:
     global size_pool
     size_pool = f.load()
 
-timestamp = datetime.now().strftime("%Y-%b-%d_%H:%M")
+timestamp = datetime.now().strftime("%Y-%b-%d_%H-%M")
 os.mkdir("./PineappleResults/run_" + timestamp)
 os.chdir("./tempDockerSetup")
 working_dir = os.getcwd()
