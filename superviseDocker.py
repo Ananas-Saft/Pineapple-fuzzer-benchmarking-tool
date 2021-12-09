@@ -9,7 +9,7 @@ size_pool = 8
 
 with open("./PineappleThreads", "r") as f:
     global size_pool
-    size_pool = f.load()
+    size_pool = int(f.load())
 
 timestamp = datetime.now().strftime("%Y-%b-%d_%H-%M")
 os.mkdir("./PineappleResults/run_" + timestamp)
