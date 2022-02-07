@@ -6,6 +6,7 @@ from multiprocessing import Pool
 from datetime import datetime
 
 size_pool = 8
+os.system("mkdir ./PineappleResults")
 
 #with open("./PineappleThreads", "r") as f:
 #    global size_pool
