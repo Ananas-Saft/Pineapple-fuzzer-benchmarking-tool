@@ -7,9 +7,9 @@ from datetime import datetime
 
 size_pool = 8
 
-with open("./PineappleThreads", "r") as f:
-    global size_pool
-    size_pool = int(f.load())
+#with open("./PineappleThreads", "r") as f:
+#    global size_pool
+#    size_pool = int(f.load())
 
 timestamp = datetime.now().strftime("%Y-%b-%d_%H-%M")
 os.mkdir("./PineappleResults/run_" + timestamp)
